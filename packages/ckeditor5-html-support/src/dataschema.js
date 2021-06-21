@@ -136,6 +136,21 @@ export default class DataSchema extends Plugin {
 		} );
 
 		this.registerBlockElement( {
+			model: 'heading1',
+			view: 'h2'
+		} );
+
+		this.registerBlockElement( {
+			model: 'heading2',
+			view: 'h3'
+		} );
+
+		this.registerBlockElement( {
+			model: 'heading3',
+			view: 'h4'
+		} );
+
+		this.registerBlockElement( {
 			model: 'listItem',
 			view: 'li'
 		} );
@@ -145,6 +160,15 @@ export default class DataSchema extends Plugin {
 			view: 'pre',
 			modelSchema: {
 				inheritAllFrom: '$block'
+			}
+		} );
+
+		// TODO Remove it once we have proper support for div elements.
+		this.registerBlockElement( {
+			model: 'htmlDiv',
+			view: 'div',
+			modelSchema: {
+				inheritAllFrom: '$htmlBlock'
 			}
 		} );
 
@@ -240,6 +264,11 @@ export default class DataSchema extends Plugin {
 		this.registerInlineElement( {
 			view: 'code',
 			model: 'htmlCode'
+		} );
+
+		this.registerInlineElement( {
+			view: 'abbr',
+			model: 'htmlAbbr'
 		} );
 
 		this.registerInlineElement( {
