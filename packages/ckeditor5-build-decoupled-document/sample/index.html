@@ -107,39 +107,11 @@
 		</p>
 	</footer>
 	<script src="../build/ckeditor.js"></script>
-	<script>
-		const watchdog = new CKSource.EditorWatchdog();
-		
-		window.watchdog = watchdog;
-		
-		watchdog.setCreator( ( element, config ) => {
-			return CKSource.Editor
-				.create( element, config )
-				.then( editor => {
-					// Set a custom container for the toolbar.
-					document.querySelector( '.document-editor__toolbar' ).appendChild( editor.ui.view.toolbar.element );
-					document.querySelector( '.ck-toolbar' ).classList.add( 'ck-reset_all' );
-		
-					return editor;
-				} )
-		} );
-		
-		watchdog.setDestructor( editor => {
-			// Set a custom container for the toolbar.
-			document.querySelector( '.document-editor__toolbar' ).removeChild( editor.ui.view.toolbar.element );
-		
-			return editor.destroy();
-		} );
-		
-		watchdog.on( 'error', handleError );
-		
-		watchdog
+	<script>DecoupledDocumentEditor
 			.create( document.querySelector( '.editor' ), {
 				
 				toolbar: {
 					items: [
-						'heading',
-						'|',
 						'fontSize',
 						'fontFamily',
 						'|',
@@ -151,6 +123,8 @@
 						'underline',
 						'strikethrough',
 						'|',
+						'heading',
+						'|',
 						'alignment',
 						'|',
 						'numberedList',
@@ -159,7 +133,6 @@
 						'outdent',
 						'indent',
 						'|',
-						'todoList',
 						'link',
 						'blockQuote',
 						'imageUpload',
@@ -168,36 +141,36 @@
 						'|',
 						'undo',
 						'redo',
-						'code',
-						'htmlEmbed',
-						'horizontalLine',
-						'imageInsert',
 						'pageBreak',
 						'removeFormat',
-						'restrictedEditing',
 						'specialCharacters',
-						'subscript',
-						'superscript',
-						'textPartLanguage',
+						'htmlEmbed',
 						'highlight',
+						'horizontalLine',
+						'imageInsert',
 						'codeBlock',
-						'CKFinder'
+						'code',
+						'textPartLanguage'
 					]
 				},
-				language: 'vi',
+				language: 'en',
 				licenseKey: '',
 				
 				
 				
 			} )
-			.catch( handleError );
+			.then( editor => {
+				window.editor = editor;
 		
-		function handleError( error ) {
-			console.error( 'Oops, something went wrong!' );
-			console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-			console.warn( 'Build id: gvq43l533d2s-pm9prdf0v9em' );
-			console.error( error );
-		}
-		
+				// Set a custom container for the toolbar.
+				document.querySelector( '.document-editor__toolbar' ).appendChild( editor.ui.view.toolbar.element );
+				document.querySelector( '.ck-toolbar' ).classList.add( 'ck-reset_all' );
+			} )
+			.catch( error => {
+				console.error( 'Oops, something went wrong!' );
+				console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+				console.warn( 'Build id: mp015scaqhdm-cguxgdc74wv' );
+				console.error( error );
+			} );
 	</script>
 </body>
