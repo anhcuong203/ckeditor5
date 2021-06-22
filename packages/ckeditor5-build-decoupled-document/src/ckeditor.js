@@ -35,7 +35,6 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle.js';
-import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown.js';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak.js';
@@ -96,7 +95,6 @@ Editor.builtinPlugins = [
 	LinkImage,
 	List,
 	ListStyle,
-	Markdown,
 	MediaEmbed,
 	MediaEmbedToolbar,
 	PageBreak,
